@@ -6,11 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!-- make something compatible with edge-->
     <title>GiphyPuff</title>    
     <meta name="viewport" content="width=device-width, initial-scale=1">    <!--start out unzoomed-->
-    <link rel="stylesheet" type="text/css" href="style.css" />    <!--My css stylesheet to a -->
+    <!--link to bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
 </head>
-<body>
- 
+<body class="bg-secondary">
+    <section>
+        <div class="container">
+                <div class="jumbotron  bg-primary">
+                    <h1 class="display-4 text-light">GIPHYPUFF</h1>
+                    
+                    <hr class="my-2">
+
+                    <div class="buttonROw">
+                            <!--- buttons will be appended here-->
+                    </div>
+
+                    <hr class="my-4">
+                </div>
+
+            <form>
+                <div class="form-inline col-sm-4">
+                    <button type="button" class="btn btn-success">RESIST</button>
+                    <input type="search" class="form-control" id="searchBox" aria-describedby="searchBox" placeholder="Get a Gif">
+                </div>
+            </form>
+        </div>
+
+        <div class="container">
+            <div class="displayZone">
+                <!--Gifs will append here-->
+            </div>
+        </div>
+
+    </section>
+        <!--Link to jquery via content delivery network, minified version-->
+        <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <!---link to my javascript-->
         <script src="assets/javascript/app.js"></script>
 </body>
