@@ -1,36 +1,33 @@
-
 $( document ).ready(function() {
 
-//declare and initalize variables.
+    //declare and initalize variables.
 
-var apiKey = "Y3h4ksc22JmMFoYTKH2XUYmRwrnYL8Gd";
-var giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + rando +"&key=" + apiKey;
-var rando = "Romulan";
-var starTrek = ["Kirk","Spock","Scotty","Picard","Riker","Sulu","Uhura","Trois","Data","Wharf"];
+    var apiKey = "Y3h4ksc22JmMFoYTKH2XUYmRwrnYL8Gd";
+    var rando = "Romulan";
+    var giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + rando +"&key=" + apiKey;
+    var starTrek = ["Kirk","Spock","Scotty","Picard","Riker","Sulu","Uhura","Trois","Data","Wharf"];
 
 
-//Styles the exiting page.
-setupButtonsInitial();
+    //Styles the exiting page.
+    setupButtonsInitial();
 
-//callGihphyAPI(){
-
-    //wrap ajax callback in function.
-    function callGiphyAPI(){
-        $.ajax({
-            url: giphyUrl,
-            method: "GET"
-        }).then(function(response) {
-            console.log(response);
-            
-        });
-    }
+    
+    
+    
+     
 
 
 
+    //When any static button is clicked.
+$('.staticButton').click(function(){
+    var redShirt = $(this).attr("name");
+    alert(redShirt);
+    callGiphy(redShirt);    //call giphy API
+});
     //setup buttonsS
     function setupButtonsInitial(){
         for(var i = 0; i< starTrek.length; i++){
-            $(".buttonROw").append(`<button name='starTrek${[i]}' type='submit'>${starTrek[i]}</button>`);
+            $(".buttonRow").append(`<button class='staticButton' name='${starTrek[i]}' type='submit'>${starTrek[i]}</button>`);
         }
     }
 });
