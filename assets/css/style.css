@@ -1,0 +1,38 @@
+.displayZone{
+    float: left;
+    margin-left: auto;
+    width: 1110px;
+    margin-right: auto;
+
+}
+.pictureFrame{
+    float: left;
+    background-color: #007bff;
+    width: 277.5px;
+    height: 240px;
+    
+
+}
+.stillGif{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid white 1px;
+}
+
+p{
+    background-color: white;
+    text-align: center;
+    color: #007bff;
+    margin-top: -10px;
+    font-weight: bold;
+    border: solid green 2px;
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
