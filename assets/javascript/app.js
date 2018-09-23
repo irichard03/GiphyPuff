@@ -31,7 +31,7 @@ $( document ).ready(function() {
                 console.log("api call succeesfull");
                 console.log(response);
                 //append all the things to displayzone at once (still image, animated image, and rating are all attributes)
-                for (i = 0; i < 20; i++) {
+                for (i = 0; i < 10; i++) {
                     $(".displayZone").append(`<div class="pictureFrame"><img class='stillGif' id='gif${i}' src='${response.data[i].images.downsized_still.url}' data-animatedGif='${response.data[i].images.original.url}'><p>Rated: ${response.data[i].rating}</p></div>`)                
                 }
             }
