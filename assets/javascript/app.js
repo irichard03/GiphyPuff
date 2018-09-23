@@ -4,10 +4,10 @@ $( document ).ready(function() {
     var rando = "Romulan";  
     var giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + rando + "&key=" + apiKey;
     var starTrek = ["Kirk","Spock","Scotty","Picard","Riker","Sulu","Uhura","Trois","Data","Worf"];
-    var theme = "+star+trek";
+    var theme = "+star+trek";   //I influence your search results so they should be star trek related.
     var redShirt;
     var blueShirt;
-    var helper = 0; //if you press button too many times helper will help you out.
+    var helper = 0; //if you press button without anything in searchbox too many times helper will help you out.
     var mySound = new sound("assets/sounds/ButtonPress.mp3");
     var mySound1 = new sound("assets/sounds/ThematicMusic.mp3");
     var mySound2 = new sound("assets/sounds/ThematicMusic2.mp3");
@@ -30,7 +30,7 @@ $( document ).ready(function() {
             if(response){
                 console.log("api call succeesfull");
                 console.log(response);
-                
+                //append all the things to displayzone at once (still image, animated image, and rating are all attributes)
                 for (i = 0; i < 20; i++) {
                     $(".displayZone").append(`<div class="pictureFrame"><img class='stillGif' id='gif${i}' src='${response.data[i].images.downsized_still.url}' data-animatedGif='${response.data[i].images.original.url}'><p>Rated: ${response.data[i].rating}</p></div>`)                
                 }
@@ -44,7 +44,8 @@ $( document ).ready(function() {
 //clickevent gif is clicked (should play)
     $(document).on('click','.stillGif',function(event){
         event.preventDefault();
-    //if already playing, store the static give in a data-stoppedGif
+    //if already playing, store the static GIF in the data-stoppedGif attribute
+    //so  it can be switched out in else statement.
         if($(this).attr("src") !== $(this).attr("data-animatedGif")){
             mySound1.stop();
             mySound2.stop();
