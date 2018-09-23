@@ -14,6 +14,7 @@ $( document ).ready(function() {
     
 //call GiphyApi
     function callAPI(crewmanGuy){
+        $('.displayZone').empty();
         rando = crewmanGuy;
         giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + rando + "&key=" + apiKey;
 
@@ -21,7 +22,19 @@ $( document ).ready(function() {
             url: giphyUrl,
             method: "GET"
         }).then(function(response) {
-            console.log(response);
+            if(response){
+                console.log("api call succeesfull");
+                console.log(response);
+                
+                for (i = 0; i < response.data.length; i++) {
+                    $(".displayZone").append(`<div class='picture${i}'>`)
+                        .append(`<img class='stillGif' src='${response.data[i].images.downsized_still.url}' data-animatedGif='${response.data[i].images.original.url}'>`)
+                        .append(`<p>${response.data[i].rating}</p>`);
+                }
+            }
+            else{
+                console.log("FAILED API CALL");
+            }
         });
     }
 
@@ -34,7 +47,7 @@ $( document ).ready(function() {
 //When add button is clicked
     $('#addButton').click(function(event){
         event.preventDefault();
-        blueShirt = $('#searchBox').val();
+        blueShirt = $('#searchBox').val().trim();
         if(blueShirt){
             starTrek.push(blueShirt);
             setupButtons();
@@ -55,7 +68,7 @@ $( document ).ready(function() {
     function setupButtons(){
         $('#searchBox').css('background-color','white');
         $('.buttonRow').empty();
-        for(var i = 0; i < starTrek.length; i++){
+        for(let i = 0; i < starTrek.length; i++){
             $('.buttonRow').append(`<button class="lcarsButton" name="${starTrek[i]}" type="submit">${starTrek[i]}</button>`);
         }
     }
