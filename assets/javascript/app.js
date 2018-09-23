@@ -4,19 +4,24 @@ $( document ).ready(function() {
     var rando = "Romulan";  
     var giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + rando + "&key=" + apiKey;
     var starTrek = ["Kirk","Spock","Scotty","Picard","Riker","Sulu","Uhura","Trois","Data","Worf"];
+    var theme = "+star+trek";
     var redShirt;
     var blueShirt;
     var helper = 0; //if you press button too many times helper will help you out.
+    var mySound = new sound("assets/sounds/ButtonPress.mp3");
+    var mySound1 = new sound("assets/sounds/ThematicMusic.mp3");
+    var mySound2 = new sound("assets/sounds/ThematicMusic2.mp3");
     
 //Styles the existing page.
     setupButtons();  
     
+
     
 //call GiphyApi
     function callAPI(crewmanGuy){
         $('.displayZone').empty();
         rando = crewmanGuy;
-        giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + rando + "&key=" + apiKey;
+        giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + rando + theme+ "&key=" + apiKey;
 
         $.ajax({
             url: giphyUrl,
@@ -39,20 +44,34 @@ $( document ).ready(function() {
 //clickevent gif is clicked (should play)
     $(document).on('click','.stillGif',function(event){
         event.preventDefault();
-        $(this).attr("src",$(this).attr("data-animatedGif"));
-        console.log(this);
+    //if already playing, store the static give in a data-stoppedGif
+        if($(this).attr("src") !== $(this).attr("data-animatedGif")){
+            mySound1.stop();
+            mySound2.stop();
+            mySound1.play();
+            $(this).attr("data-stoppedGif",$(this).attr("src"));
+            $(this).attr("src",$(this).attr("data-animatedGif"));
+            console.log("GifClick happend on:" + this);
+        }else{
+            mySound1.stop();
+            mySound2.stop();
+            mySound2.play();
+            $(this).attr("src",$(this).attr("data-stoppedGif"));
+        }
     });
     
 
-//clickevent any lcars button is clicked.
+//clickevent any button is clicked.
     $(document).on('click','.lcarsButton',function(event){
+        mySound.play();
         event.preventDefault();
         redShirt = $(this).attr("name");
         callAPI(redShirt);                   
     });
-//clickevent add button is clicked
+//clickevent to add button when add button is clicked
     $('#addButton').click(function(event){
         event.preventDefault();
+        mySound.play();
         blueShirt = $('#searchBox').val().trim();
         if(blueShirt){
             starTrek.push(blueShirt);
@@ -80,5 +99,18 @@ $( document ).ready(function() {
     }
 });
 
-//bonus ideas...add custom alert box featuring helper from venture bros.
-//style like lcars from star trek.
+//sound object from w3schools, sounds are orgingal though.
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
+}

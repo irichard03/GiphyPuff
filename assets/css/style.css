@@ -1,15 +1,56 @@
+body {
+    background-image: url(../images/stars.jpg);
+}
+
+.jumbotron {
+    background-color: #FF9900;    
+}
+.buttonRow {
+    width: 50%;
+    overflow: hidden;
+}
+
+#enterprise {
+    float: left;
+    position: absolute;
+    height: 45%;
+    width: 45%;
+    margin-top: -140px;
+    margin-left: 580px;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.lcarsButton {
+    background-color: #007bff;
+    border-radius: 10%;
+    margin-right: 8px;
+    margin-top: 4px;
+
+}
+
+#searchBox {
+    background-color: black !important;
+    color: #007bff !important;
+}
+
 .displayZone{
     float: left;
     margin-left: auto;
     width: 1110px;
     margin-right: auto;
 
+
 }
 .pictureFrame{
     float: left;
-    background-color: #007bff;
-    width: 277.5px;
+    background-color: #CC99CC;
+    width: 275.5px;
     height: 240px;
+    
     
 
 }
@@ -20,19 +61,20 @@
     height: 200px;
     margin-top: 10px;
     margin-bottom: 10px;
-    border: solid white 1px;
+    border: solid #999CCC 2px;
 }
 
 p{
-    background-color: white;
+    background-color:#CC6666;
     text-align: center;
-    color: #007bff;
+    color: black;
     margin-top: -10px;
     font-weight: bold;
-    border: solid green 2px;
+    border: solid 999CCC 2px;
     width: 200px;
     margin-left: 20px;
     margin-right: 20px;
+    font-family: 'Roboto', sans-serif;
     
 }
 
